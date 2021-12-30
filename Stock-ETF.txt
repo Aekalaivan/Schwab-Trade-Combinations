@@ -115,3 +115,11 @@ THEN [TS-TRAIL-BY] <> "NA";
 
 IF [ADVANCED-ORDERS] = "TRAILING-STOP" 
 THEN [TS-DURATION] <> "NA";
+
+#---------------------------------------------------------------------
+
+IF [ACTION] = "BUY" AND [ADVANCED-ORDERS] = "TRAILING-STOP"
+THEN [TS-DIRECTION] = "UP";
+
+IF [ACTION] IN {"SELL", "SHORT"} AND [ADVANCED-ORDERS] = "TRAILING-STOP"
+THEN [TS-DIRECTION] = "DOWN";
